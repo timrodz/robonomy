@@ -8,10 +8,11 @@ import './layout.css';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query {
       site {
         siteMetadata {
-          title
+          title,
+          email
         }
       }
     }
@@ -22,23 +23,19 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={data.site.siteMetadata.title} email={data.site.siteMetadata.email} />
       <div>
         <main>{children}</main>
         <footer>
           <Paragraph1 className={centered}>
-            Copyright © {new Date().getFullYear()}
-            {` `}
+            Copyright © {new Date().getFullYear()} {' '} Roberto Ord&#243;ñez — Made by{' '}
             <a
               href="https://www.timrodz.com"
               target="_blank"
               rel="noopener noreferrer"
             >
               Juan Alejandro Morais
-            </a>{' '}
-            — Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
+            </a>
           </Paragraph1>
         </footer>
       </div>

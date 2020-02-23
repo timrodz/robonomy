@@ -1,42 +1,29 @@
+import { styled } from 'baseui';
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid';
 import { graphql, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
 import React from 'react';
-import Image from '../image';
 
-const itemProps = {
-  backgroundColor: 'mono300',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-};
-
-const wideItemProps = {
-  ...itemProps,
-  overrides: {
-    Block: {
-      style: ({$theme}) => ({
-        width: `calc((200% - ${$theme.sizing.scale800}) / 3)`,
-      }),
-    },
-  },
-};
+const Image = styled(Img, {
+  objectFit: 'cover',
+  objectPosition: '100% 0',
+  width: '100%',
+  height: '400px',
+});
 
 const ImageGallery = () => {
   const {
     allInstaNode: { edges },
   } = useStaticQuery(graphql`
     {
-      allInstaNode {
+      allInstaNode(sort: { fields: timestamp, order: DESC }, limit: 12) {
         edges {
           node {
             id
             caption
             localFile {
               childImageSharp {
-                fixed(width: 512, height: 512) {
-                  ...GatsbyImageSharpFixed
-                }
-                fluid(maxWidth: 1200) {
+                fluid {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -54,11 +41,11 @@ const ImageGallery = () => {
         caption,
         localFile: { childImageSharp },
       } = node;
-      const imageData = childImageSharp.fixed;
+      const imageData = childImageSharp.fluid;
 
       return (
-        <FlexGridItem key={id} {...itemProps}>
-          <Image imageData={imageData} alt={caption} />
+        <FlexGridItem key={id}>
+          <Image loading="lazy" alt={caption || ''} fluid={imageData} />
         </FlexGridItem>
       );
     });
@@ -68,10 +55,10 @@ const ImageGallery = () => {
 
   return (
     <FlexGrid
-      flexGridColumnCount={3}
+      flexGridColumnCount={[1, 1, 2, 3]}
       flexGridColumnGap="scale100"
       flexGridRowGap="scale100"
-      marginBottom="scale800" 
+      marginBottom="scale800"
     >
       {renderImages()}
     </FlexGrid>

@@ -1,3 +1,4 @@
+import { useStyletron } from 'baseui';
 import { Button } from 'baseui/button';
 import {
   ALIGN,
@@ -5,29 +6,43 @@ import {
   StyledNavigationItem,
   StyledNavigationList,
 } from 'baseui/header-navigation';
-import { Display2 } from 'baseui/typography';
+import { StyledLink } from 'baseui/link';
 import React from 'react';
-import { useStyletron } from 'styletron-react';
 
-const Header = ({ siteTitle }) => {
-  const [css, theme] = useStyletron();
-  const c = css({ textShadow: '4px 4px #edeccc' });
+const Header = ({ siteTitle, email }) => {
+  const [css] = useStyletron();
+  const itemAlignment = css({
+    justifyContent: 'space-between',
+  });
 
   return (
-    <HeaderNavigation>
+    <HeaderNavigation className={itemAlignment}>
       <StyledNavigationList $align={ALIGN.left}>
         <StyledNavigationItem>
-          <Display2 className>{siteTitle}</Display2>
-        </StyledNavigationItem>
+        <StyledLink
+            href="/"
+          >
+            {siteTitle}
+          </StyledLink></StyledNavigationItem>
       </StyledNavigationList>
-      <StyledNavigationList $align={ALIGN.center} />
       <StyledNavigationList $align={ALIGN.right}>
         <StyledNavigationItem>
+          <StyledLink
+            href="https://www.instagram.com/robonomy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </StyledLink>
+        </StyledNavigationItem>
+        <StyledNavigationItem>
+        <StyledLink
+            href={`mailto:${email}`}
+          >
           <Button>Let's talk</Button>
+          </StyledLink>
         </StyledNavigationItem>
       </StyledNavigationList>
-      <StyledNavigationList $align={ALIGN.right} />
-      <StyledNavigationList $align={ALIGN.right} />
     </HeaderNavigation>
   );
 };
