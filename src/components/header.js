@@ -19,11 +19,8 @@ const Header = ({ siteTitle, email }) => {
     <HeaderNavigation className={itemAlignment}>
       <StyledNavigationList $align={ALIGN.left}>
         <StyledNavigationItem>
-        <StyledLink
-            href="/"
-          >
-            {siteTitle}
-          </StyledLink></StyledNavigationItem>
+          <StyledLink href="/">{siteTitle}</StyledLink>
+        </StyledNavigationItem>
       </StyledNavigationList>
       <StyledNavigationList $align={ALIGN.right}>
         <StyledNavigationItem>
@@ -36,10 +33,8 @@ const Header = ({ siteTitle, email }) => {
           </StyledLink>
         </StyledNavigationItem>
         <StyledNavigationItem>
-        <StyledLink
-            href={`mailto:${email}`}
-          >
-          <Button>Let's talk</Button>
+          <StyledLink href={`mailto:${email}`}>
+            <Button>Let's talk</Button>
           </StyledLink>
         </StyledNavigationItem>
       </StyledNavigationList>

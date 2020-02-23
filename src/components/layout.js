@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
     query {
       site {
         siteMetadata {
-          title,
+          title
           email
         }
       }
@@ -23,12 +23,16 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} email={data.site.siteMetadata.email} />
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        email={data.site.siteMetadata.email}
+      />
       <div>
         <main>{children}</main>
         <footer>
           <Paragraph1 className={centered}>
-            Copyright © {new Date().getFullYear()} {' '} Roberto Ord&#243;ñez — Made by{' '}
+            Copyright © {new Date().getFullYear()} Roberto Ord&#243;ñez — Made
+            by{' '}
             <a
               href="https://www.timrodz.com"
               target="_blank"
