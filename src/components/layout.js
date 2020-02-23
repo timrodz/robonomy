@@ -20,6 +20,7 @@ const Layout = ({ children }) => {
 
   const [css] = useStyletron();
   const centered = css({ textAlign: 'center' });
+  const link = css({ textDecoration: 'none' });
 
   return (
     <>
@@ -33,7 +34,7 @@ const Layout = ({ children }) => {
           <Paragraph1 className={centered}>
             Copyright © {new Date().getFullYear()} Roberto Ord&#243;ñez — Made
             by{' '}
-            <a
+            <a className={link}
               href="https://www.timrodz.com"
               target="_blank"
               rel="noopener noreferrer"
