@@ -1,8 +1,8 @@
 import { Paragraph1 } from 'baseui/typography';
 import { graphql, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { useStyletron } from 'styletron-react';
+import * as React from 'react';
 import Header from './header';
 import './layout.css';
 

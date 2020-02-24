@@ -7,7 +7,7 @@ import {
   StyledNavigationList,
 } from 'baseui/header-navigation';
 import { StyledLink } from 'baseui/link';
-import React from 'react';
+import * as React from 'react';
 
 const Header = ({ siteTitle, email }) => {
   const [css] = useStyletron();

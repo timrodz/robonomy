@@ -2,7 +2,7 @@ import { styled } from 'baseui';
 import { FlexGrid, FlexGridItem } from 'baseui/flex-grid';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
-import React from 'react';
+import * as React from 'react';
 
 const Image = styled(Img, {
   objectFit: 'cover',
