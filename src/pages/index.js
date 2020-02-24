@@ -1,12 +1,13 @@
-import { BaseProvider, LightTheme } from 'baseui';
-import React, { useEffect, useState } from 'react';
+import { BaseProvider } from 'baseui';
+import * as React from 'react';
 import { Provider as StyletronProvider } from 'styletron-react';
 import App from '../components/app';
+import Theme from '../theme';
 
 export default () => {
-  const [engine, setEngine] = useState(null);
+  const [engine, setEngine] = React.useState(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Load the `styletron-engine-atomic` package dynamically.
     // Reason: It requires use of `document`, which is not available
     // outside the browser, so we need to wait until it successfully loads.
@@ -21,7 +22,7 @@ export default () => {
 
   return (
     <StyletronProvider value={engine}>
-      <BaseProvider theme={LightTheme}>
+      <BaseProvider theme={Theme}>
         <App />
       </BaseProvider>
     </StyletronProvider>
