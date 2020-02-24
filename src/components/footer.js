@@ -3,7 +3,6 @@ import * as React from 'react';
 import Link from './generics/link';
 
 const Footer = () => {
-
   return (
     <footer>
       <Paragraph1
