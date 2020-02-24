@@ -8,7 +8,8 @@ const Image = styled(Img, {
   objectFit: 'cover',
   objectPosition: '100% 0',
   width: '100%',
-  height: '400px',
+  height: '100%',
+  maxHeight: '25rem',
 });
 
 const ImageGallery = () => {
@@ -44,7 +45,7 @@ const ImageGallery = () => {
       const imageData = childImageSharp.fluid;
 
       return (
-        <FlexGridItem key={id}>
+        <FlexGridItem key={id} flexGridItemIndex={id}>
           <Image loading="lazy" alt={caption || ''} fluid={imageData} />
         </FlexGridItem>
       );
@@ -55,10 +56,9 @@ const ImageGallery = () => {
 
   return (
     <FlexGrid
-      flexGridColumnCount={[1, 1, 2, 3]}
-      flexGridColumnGap="scale100"
-      flexGridRowGap="scale100"
-      marginBottom="scale800"
+      flexGridColumnCount={[1, 2, 3]}
+      flexGridColumnGap={['scale0', 'scale200']}
+      flexGridRowGap={['scale0', 'scale200']}
     >
       {renderImages()}
     </FlexGrid>
