@@ -1,8 +1,8 @@
 import { BaseProvider } from 'baseui';
 import * as React from 'react';
 import { Provider as StyletronProvider } from 'styletron-react';
-import App from '../components/app';
-import Theme from '../theme';
+import App from 'components/app';
+import Theme from 'theme';
 
 export default () => {
   const [engine, setEngine] = React.useState(null);

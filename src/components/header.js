@@ -6,9 +6,12 @@ import {
   StyledNavigationList,
 } from 'baseui/header-navigation';
 import * as React from 'react';
-import Link from './generics/link';
+import Link from 'common/link';
+import SocialLink from 'common/socialLink';
 
-const Header = ({ siteTitle, email }) => (
+const config = require('data/config');
+
+const Header = ({ siteTitle }) => (
   <HeaderNavigation
     overrides={{
       Root: {
@@ -25,16 +28,12 @@ const Header = ({ siteTitle, email }) => (
     </StyledNavigationList>
     <StyledNavigationList $align={ALIGN.right}>
       <StyledNavigationItem>
-        <Link
-          href="https://www.instagram.com/robonomy"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <SocialLink href={config.socialLinks.instagram}>
           Instagram
-        </Link>
+        </SocialLink>
       </StyledNavigationItem>
       <StyledNavigationItem>
-        <Link href={`mailto:${email}`}>
+        <Link href={`mailto:${config.contact.email}`}>
           <Button>Let's talk</Button>
         </Link>
       </StyledNavigationItem>

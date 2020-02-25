@@ -1,8 +1,8 @@
 import { StyledBody } from 'baseui/card';
+import ImageGallery from 'components/imageGallery';
 import * as React from 'react';
 import Layout from './layout';
 import SEO from './seo';
-import ImageGallery from './views/imageGallery';
 
 const App = () => {
   return (

@@ -1,6 +1,8 @@
 import { Paragraph1 } from 'baseui/typography';
+import SocialLink from 'common/socialLink';
 import * as React from 'react';
-import Link from './generics/link';
+
+const config = require('data/config');
 
 const Footer = () => {
   return (
@@ -14,14 +16,8 @@ const Footer = () => {
           },
         }}
       >
-        Copyright © {new Date().getFullYear()} Roberto Ord&#243;ñez — Made by{' '}
-        <Link
-          href="https://www.timrodz.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Juan Alejandro Morais
-        </Link>
+        Copyright © {new Date().getFullYear()} {config.legalName} — Made by{' '}
+        <SocialLink href={config.authorUrl}>{config.author}</SocialLink>
       </Paragraph1>
     </footer>
   );

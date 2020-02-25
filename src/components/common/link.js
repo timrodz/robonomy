@@ -7,7 +7,11 @@ const Link = props => {
     color: theme.colors.primaryA,
     textDecoration: 'none',
   });
-  return <a className={decor} {...props} />;
+  return (
+    <a className={decor} {...props}>
+      {props.children}
+    </a>
+  );
 };
 
 export default Link;

@@ -5,10 +5,20 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import * as React from 'react';
+import Thumbnail from 'static/images/thumbnail.png';
+import {
+  address,
+  contact,
+  foundingDate,
+  legalName,
+  logo,
+  socialLinks,
+  url,
+} from 'data/config';
+import { graphql, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
+import * as React from 'react';
 import Helmet from 'react-helmet';
-import { useStaticQuery, graphql } from 'gatsby';
 
 function SEO({ description, lang, meta, title }) {
   const { site } = useStaticQuery(
@@ -25,6 +35,33 @@ function SEO({ description, lang, meta, title }) {
     `
   );
 
+  const structuredDataOrganization = `{
+  	"@context": "http://schema.org",
+  	"@type": "Organization",
+  	"legalName": "${legalName}",
+  	"url": "${url}",
+  	"logo": "${logo}",
+  	"foundingDate": "${foundingDate}",
+  	"founders": [{
+  		"@type": "Person",
+  		"name": "${legalName}"
+  	}],
+  	"contactPoint": [{
+  		"@type": "ContactPoint",
+  		"email": "${contact.email}",
+  		"contactType": "customer service"
+  	}],
+  	"address": {
+  		"@type": "PostalAddress",
+  		"addressLocality": "${address.city}",
+  		"addressCountry": "${address.country}"
+  	},
+    "sameAs": [
+  		"${socialLinks.instagram}",
+      "${socialLinks.twitter}",
+  	]
+  	}`;
+
   const metaDescription = description || site.siteMetadata.description;
 
   return (
@@ -38,6 +75,10 @@ function SEO({ description, lang, meta, title }) {
         {
           name: `description`,
           content: metaDescription,
+        },
+        {
+          name: `image`,
+          content: Thumbnail,
         },
         {
           property: `og:title`,
@@ -68,7 +109,9 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <script type="application/ld+json">{structuredDataOrganization}</script>
+    </Helmet>
   );
 }
 
