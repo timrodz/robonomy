@@ -4,7 +4,7 @@ module.exports = {
   title: 'Robonomy',
   description:
     'Portfolio of Roberto Ordóñez, Photographer based in Panama City, Panama.',
-  url: 'https:www.robonomy.com',
+  url: 'https://www.robonomy.com',
   logo: 'static/images/favicon.png',
   legalName: 'Roberto Ordóñez',
   socialLinks: {
