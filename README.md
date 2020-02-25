@@ -5,8 +5,10 @@
   </a>
 </p>
 <h1 align="center">
-  Gatsby's default starter
+  Robonomy
 </h1>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/29dbf20d-214b-4bc6-b98f-bf4480c4f1f0/deploy-status)](https://app.netlify.com/sites/zealous-fermat-78d330/deploys)
 
 ## Project Specifications
 
